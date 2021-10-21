@@ -4,8 +4,8 @@ import { useRef } from "react"; /* react's concept of refs, using the 'useRef' h
 import Card from "../ui/Card";
 import classes from "./NewMeetupForm.module.css";
 
-function NewMeetupForm(){
-    const titleInputRef = useRef();    /*execute 'useRef()' method to create a reference object, storing it on a constant, then connecting this created object to the input field we want using the react's built in special prop 'ref'*/
+function NewMeetupForm(props){
+    const titleInputRef = useRef();    /*execute 'useRef()' method to instantiate a reference object, storing it on a constant, then connecting this created object to the input field we want using the react's built in special prop 'ref'*/
     const imageInputRef = useRef();
     const addressInputRef = useRef();
     const descriptionInputRef = useRef();
@@ -25,7 +25,8 @@ function NewMeetupForm(){
             description: enteredDescription,
         };
 
-        console.log(meetupData);
+        props.onAddMeetup(meetupData);
+//        console.log(meetupData);
     }    
 
     return <Card>
