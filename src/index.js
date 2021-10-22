@@ -6,9 +6,14 @@ import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './App';
 
+import { FavoritesContextProvider } from './store/Favorites-context'; //curly braces because we don't want the default export which is the context object, but the component function instead 
+
 ReactDOM.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>, 
+  <FavoritesContextProvider>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter> 
+  </FavoritesContextProvider>,
+
   document.getElementById('root')
 );
