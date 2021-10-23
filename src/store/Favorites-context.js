@@ -3,7 +3,7 @@
  * components, such as the current authenticated user, theme, favorite items, or preferred language, etc.
  */
 
-import { createContext, useState } from "react";
+import { createContext, useState } from 'react';
 
 //CREATE THE CONTEXT
 const FavoritesContext = createContext({
@@ -38,25 +38,20 @@ export function FavoritesContextProvider(props){    //use 'export' keyword to ma
         });
     }
 
-    function removeFavoriteHandler(meetupId){
+    function removeFavoriteHandler(meetupId) {
         setUserFavorites( (prevUserFavorites) => {
-            return (
-                // 'filter()' returns a new array where we can filter out items. 
-                // 'filter()' expects a function as argument that executes for every item in the array                                            
-                // 'filter()' has to return true to keep the filtered item, or false to remove it from array 
-                prevUserFavorites.filter(arrayItemObject => arrayItemObject.id !== meetupId)
-            );
+            // 'filter()' returns a new array where we can filter out items. 
+            // 'filter()' expects a function as argument that executes for every item in the array                                            
+            // 'filter()' has to return true to keep the filtered item, or false to remove it from array 
+            return prevUserFavorites.filter(meetup => meetup.id !== meetupId)            
         });
     }
 
     function itemIsFavoriteHandler(meetupId){
-        return (
-            // 'some()' built-in method of javascript, expects a function as argument that executes for every item in the array
-            // 'some()' returns true if the function passed as an argument returns true for at least one of the items in the array
-            userFavorites.some(arrayItemObject => arrayItemObject.id === meetupId)
-        );
+        // 'some()' built-in method of javascript, expects a function as argument that executes for every item in the array
+        // 'some()' returns true if the function passed as an argument returns true for at least one of the items in the array
+        return userFavorites.some(meetup => meetup.id === meetupId);
     }
-
 
     //UPDATE THE CONTEXT DINAMICALLY WITH THE STATE VARIABLE SNAPSHOT  
     const context = {
